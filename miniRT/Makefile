@@ -33,7 +33,9 @@ SRCS = 	main.c \
 		intersection/plan_intersection.c \
 		intersection/intersection.c \
 		vector/vect_product.c \
-		intersection/cylinder_intersection.c
+		intersection/cylinder_intersection.c \
+		color/accesseur_color.c \
+		utils/get_norm_surface.c
 
 OBJS = $(SRCS:.c=.o)
 

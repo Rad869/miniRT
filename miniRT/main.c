@@ -6,7 +6,7 @@
 /*   By: rrabeari <rrabeari@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 09:42:48 by fifrandr          #+#    #+#             */
-/*   Updated: 2025/02/18 07:33:47 by rrabeari         ###   ########.fr       */
+/*   Updated: 2025/02/18 21:11:08 by rrabeari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,6 @@ int main(int ac, char **av)
     if (!init_window(&data, scene))
         msg_error("Windows error");
     intersect_show(scene);
-    printf("cyl diam = %lf height = %lf\n", scene->cylinder->cylinder->diameter, scene->cylinder->cylinder->height);
     mlx_put_image_to_window(scene->win->mlx, scene->win->win, scene->win->img, 0, 0);
     mlx_loop(data.mlx);
     return (0);

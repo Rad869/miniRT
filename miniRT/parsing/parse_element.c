@@ -6,7 +6,7 @@
 /*   By: rrabeari <rrabeari@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 14:43:47 by fifrandr          #+#    #+#             */
-/*   Updated: 2025/02/16 11:33:47 by rrabeari         ###   ########.fr       */
+/*   Updated: 2025/02/18 20:14:03 by rrabeari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 int parse_color(char *str, t_color *color)
 {
-    char **parts;
-    int values[3];
+    char	**parts;
+    double	values[3];
 
     parts = ft_split(str, ',');
     if (!parts)
         return (0);
-    values[0] = ft_atoi(parts[0]);
-    values[1] = ft_atoi(parts[1]);
-    values[2] = ft_atoi(parts[2]);
+    values[0] = ft_atof(parts[0]) / 255.0;
+    values[1] = ft_atof(parts[1]) / 255.0;
+    values[2] = ft_atof(parts[2]) / 255.0;
     color->part1 = values[0];
     color->part2 = values[1];
     color->part3 = values[2];

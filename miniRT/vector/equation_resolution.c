@@ -6,7 +6,7 @@
 /*   By: rrabeari <rrabeari@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 12:59:00 by rrabeari          #+#    #+#             */
-/*   Updated: 2025/02/18 07:01:55 by rrabeari         ###   ########.fr       */
+/*   Updated: 2025/02/18 21:30:31 by rrabeari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,3 +45,12 @@ double	quadratique_equation(double a, double b, double c)
 	}
 	return (-1);
 }
+
+t_vector	k_vector(double k, t_vector vec)
+{
+	vec.x_d = vec.x_d * k;
+	vec.y_d = vec.y_d * k;
+	vec.z_d = vec.z_d * k;
+	return (vec);
+}
+

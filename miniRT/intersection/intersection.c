@@ -6,7 +6,7 @@
 /*   By: rrabeari <rrabeari@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 07:34:51 by rrabeari          #+#    #+#             */
-/*   Updated: 2025/02/18 07:27:25 by rrabeari         ###   ########.fr       */
+/*   Updated: 2025/02/18 20:34:46 by rrabeari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	intersection(t_scene *scene, t_colision *col, t_vector vec, t_scr_p p)
 {
+	t_color	obj_color;
+	
 	col->obj = (void *) NULL;
 	col->dist = INT_MAX;
 	col->type[0] = '\0';
@@ -24,11 +26,20 @@ void	intersection(t_scene *scene, t_colision *col, t_vector vec, t_scr_p p)
 	if (col->dist < INT_MAX)
 	{
 		if (ft_strcmp(col->type, "sp") == 0)
-			my_put_pixel(p.x, p.y, 0xff10ff, scene);
+		{
+			obj_color = ((t_sphere *) col->obj)->color;
+			my_put_pixel(p.x, p.y, convert_color(obj_color), scene);
+		}
 		else if (ft_strcmp(col->type, "pl") == 0)
-			my_put_pixel(p.x, p.y, 0x00ffff, scene);
+		{
+			obj_color = ((t_plan *) col->obj)->color;
+			my_put_pixel(p.x, p.y, convert_color(obj_color), scene);
+		}
 		else if (ft_strcmp(col->type, "cy") == 0)
-			my_put_pixel(p.x, p.y, 0x00ff00, scene);
+		{
+			obj_color = ((t_cylinder *) col->obj)->color;
+			my_put_pixel(p.x, p.y, convert_color(obj_color), scene);
+		}
 	}
 	else
 		my_put_pixel(p.x, p.y, 0x000000, scene);

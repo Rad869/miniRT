@@ -6,7 +6,7 @@
 /*   By: rrabeari <rrabeari@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 09:43:08 by fifrandr          #+#    #+#             */
-/*   Updated: 2025/02/18 10:37:48 by rrabeari         ###   ########.fr       */
+/*   Updated: 2025/02/18 21:37:39 by rrabeari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@
 
 typedef struct s_color
 {
-	int	part1;
-	int	part2;
-	int	part3;
+	double	part1;
+	double	part2;
+	double	part3;
 }	t_color;
 
 typedef struct s_point
@@ -238,6 +238,8 @@ t_vector	add_vector(t_vector a, t_vector b, t_point origin);
 t_vector	substract_vect(t_point a, t_point b, t_point origin);
 t_point		to_point(t_vector vec);
 t_vector	to_vector(t_point p, t_point origin);
+t_vector	k_vector(double k, t_vector vec);
+t_vector	get_norm_surf(void *obj, char *type, t_point pos);
 
 double		quadratique_equation(double a, double b, double c);
 void		sphere_int(t_vector d, t_sphere_list **s, t_colision *c);
@@ -258,5 +260,8 @@ int			parse_color(char *str, t_color *color);
 int			parse_point(char *str, t_point *point);
 int			parse_vector(char *str, t_vector *vector);
 int			parse_camera(char *line, t_camera *camera);
+
+int			convert_color(t_color col);
+t_color		add_color(t_color c1, t_color c2);
 
 #endif
