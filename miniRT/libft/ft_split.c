@@ -1,0 +1,64 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fifrandr <fifrandr@student.42antananari    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/09 10:03:38 by fifrandr          #+#    #+#             */
+/*   Updated: 2025/01/27 10:22:37 by fifrandr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+static size_t	ft_countword(char const *s, char c)
+{
+	unsigned int	i;
+	unsigned int	word;
+	unsigned int	trigger;
+
+	i = 0;
+	word = 0;
+	trigger = 0;
+	while (s[i])
+	{
+		if (s[i] != c && trigger == 0)
+		{
+			trigger = 1;
+			word++;
+		}
+		if (s[i] == c)
+			trigger = 0;
+		i++;
+	}
+	return (word);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	char	**lst;
+	size_t	word_len;
+	int		i;
+
+	lst = (char **)malloc((ft_countword(s, c) + 1) * sizeof(char *));
+	if (!s || !lst)
+		return (0);
+	i = 0;
+	while (*s)
+	{
+		while (*s == c && *s)
+			s++;
+		if (*s)
+		{
+			if (!ft_strchr(s, c))
+				word_len = ft_strlen(s);
+			else
+				word_len = ft_strchr(s, c) - s;
+			lst[i++] = ft_substr(s, 0, word_len);
+			s += word_len;
+		}
+	}
+	lst[i] = NULL;
+	return (lst);
+}
