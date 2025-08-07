@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   equation_resolution.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rrabeari <rrabeari@student.42antananari    +#+  +:+       +#+        */
+/*   By: fifrandr <fifrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 12:59:00 by rrabeari          #+#    #+#             */
-/*   Updated: 2025/02/18 21:30:31 by rrabeari         ###   ########.fr       */
+/*   Updated: 2025/02/24 13:29:56 by fifrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ double	quadratique_equation(double a, double b, double c)
 	if (delta < 0)
 		return (-1);
 	else if (delta == 0)
-		return (- b / (2 * a));
+		return (-b / (2 * a));
 	else
 	{
-		result1 = (- b - sqrt(delta)) / (2 * a);
-		result2 = (- b + sqrt(delta)) / (2 * a);
+		result1 = (-b - sqrt(delta)) / (2 * a);
+		result2 = (-b + sqrt(delta)) / (2 * a);
 		if (result1 > 0 && result2 > 0)
 			return (double_min(result1, result2));
 		else if (result1 <= 0 && result2 > 0)
@@ -53,4 +53,3 @@ t_vector	k_vector(double k, t_vector vec)
 	vec.z_d = vec.z_d * k;
 	return (vec);
 }
-

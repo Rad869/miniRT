@@ -6,7 +6,7 @@
 /*   By: fifrandr <fifrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 11:58:00 by rrabeari          #+#    #+#             */
-/*   Updated: 2025/01/27 16:57:54 by fifrandr         ###   ########.fr       */
+/*   Updated: 2025/02/24 12:40:25 by fifrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ char	*ft_strjoin_get(char *s1, char *s2)
 
 	i = 0;
 	j = 0;
-	str = (char *)malloc(sizeof(char) * ft_strlen_get(s1) + ft_strlen_get(s2) + 1);
+	str = (char *)malloc(sizeof(char) * ft_strlen_get(s1)
+			+ ft_strlen_get(s2) + 1);
 	if (!str)
 		return (NULL);
 	while (s1[i] != '\0')

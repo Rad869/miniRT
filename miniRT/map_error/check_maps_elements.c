@@ -6,77 +6,48 @@
 /*   By: fifrandr <fifrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 07:12:50 by fifrandr          #+#    #+#             */
-/*   Updated: 2025/02/11 09:34:16 by fifrandr         ###   ########.fr       */
+/*   Updated: 2025/03/01 17:04:01 by fifrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/miniRT.h"
 
-void    init_map_elements(t_map_elements *elements)
+void	init_map_elements(t_map_elements *elements)
 {
-    elements->ambient_count = 0;
-    elements->camera_count = 0;
-    elements->ligth_count = 0;
-    elements->sphere_count = 0;
-    elements->plane_count = 0;
-    elements->cylinder_count = 0; 
+	elements->ambient_count = 0;
+	elements->camera_count = 0;
+	elements->ligth_count = 0;
+	elements->sphere_count = 0;
+	elements->plane_count = 0;
+	elements->cylinder_count = 0;
 }
 
-int check_map_elements(t_map_elements *elements)
+int	check_map_elements(t_map_elements *elements)
 {
-    if (elements->ambient_count != 1 || elements->camera_count !=1
-        || elements->ligth_count != 1)
-        return (0);
-    if (elements->sphere_count == 0
-        && elements->plane_count == 0
-        && elements->cylinder_count == 0)
-        return (0);
-    return (1);
+	if (elements->ambient_count != 1 || elements->camera_count != 1
+		|| elements->ligth_count != 1)
+		return (0);
+	if (elements->sphere_count == 0 && elements->plane_count == 0
+		&& elements->cylinder_count == 0)
+		return (0);
+	return (1);
 }
 
-// int update_map_elements(char *line, t_map_elements *elements)
-// {
-//     if (ft_strchr(line, 'A') && ambient_ligth(line))
-//     {
-//         printf("mbola tafiditra\n");
-//         elements->ambient_count++;
-//     }
-//     else if (ft_strchr(line, 'C') && check_camera(line))
-//         elements->camera_count++;
-//     else if (line[0] == 'L' && check_light(line))
-//         elements->ligth_count++;
-//     else if (line[0] == 's' && line[1] == 'p'
-//             && check_sphere(line))
-//         elements->sphere_count++;
-//     else if (line[0] == 'p' && line[1] == 'l'
-//             && check_plane(line))
-//         elements->plane_count++;
-//     else if (line[0] == 'c' && line[1] == 'y'
-//             && check_cylinder(line))
-//         elements->cylinder_count++;
-//     else
-//         return (0);
-//     return (1);
-// }
-
-int update_map_elements(char *line, t_map_elements *elements)
+int	update_map_elements(char *line, t_map_elements *elements)
 {
-    if (ft_strchr(line, 'A') && ambient_ligth(line))
-        elements->ambient_count++;
-    else if (ft_strchr(line, 'C') && check_camera(line))
-        elements->camera_count++;
-    else if (ft_strchr(line, 'L') && check_light(line))
-        elements->ligth_count++;
-    else if (ft_strchr(line, 's')
-            && check_sphere(line))
-        elements->sphere_count++;
-    else if (ft_strchr(line, 'p')
-            && check_plane(line))    
-        elements->plane_count++;
-    else if (ft_strchr(line, 'c')
-            && check_cylinder(line))
-        elements->cylinder_count++;
-    else
-        return (0);
-    return (1);
+	if (ft_strchr(line, 'A') && ambient_ligth(line))
+		elements->ambient_count++;
+	else if (ft_strchr(line, 'C') && check_camera(line))
+		elements->camera_count++;
+	else if (ft_strchr(line, 'L') && check_light(line))
+		elements->ligth_count++;
+	else if (ft_strchr(line, 's') && check_sphere(line))
+		elements->sphere_count++;
+	else if (ft_strchr(line, 'p') && ft_strchr(line, 'l') && check_plane(line))
+		elements->plane_count++;
+	else if (ft_strchr(line, 'c') && check_cylinder(line))
+		elements->cylinder_count++;
+	else
+		return (0);
+	return (1);
 }

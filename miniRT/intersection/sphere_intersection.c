@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sphere_intersection.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rrabeari <rrabeari@student.42antananari    +#+  +:+       +#+        */
+/*   By: fifrandr <fifrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 13:01:28 by rrabeari          #+#    #+#             */
-/*   Updated: 2025/02/17 11:26:25 by rrabeari         ###   ########.fr       */
+/*   Updated: 2025/03/05 12:13:08 by fifrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

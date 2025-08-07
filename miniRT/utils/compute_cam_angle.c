@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   compute_cam_angle.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rrabeari <rrabeari@student.42antananari    +#+  +:+       +#+        */
+/*   By: fifrandr <fifrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 12:03:48 by rrabeari          #+#    #+#             */
-/*   Updated: 2025/02/16 14:26:44 by rrabeari         ###   ########.fr       */
+/*   Updated: 2025/02/24 13:24:09 by fifrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ static void	theta_phi_random(t_vector vec, double *theta, double *phi)
 	double	additional;
 
 	additional = 0;
-	*theta = - atan(vec.y_d / vec.z_d);
-	*phi = - atan(vec.x_d * sin(*theta) / vec.y_d);
+	*theta = -atan(vec.y_d / vec.z_d);
+	*phi = -atan(vec.x_d * sin(*theta) / vec.y_d);
 	if (vec.z_d < 0)
 		additional = PI;
 	*phi += additional;
@@ -28,7 +28,7 @@ static void	theta_phi_random(t_vector vec, double *theta, double *phi)
 
 static void	get_theta_phi(t_vector vec, double *theta, double *phi)
 {
-	t_vector n_vec;
+	t_vector	n_vec;
 
 	n_vec = normalisation(vec);
 	if (n_vec.x_d != 0 && n_vec.y_d == 0 && n_vec.z_d == 0)
@@ -39,7 +39,7 @@ static void	get_theta_phi(t_vector vec, double *theta, double *phi)
 	else if (n_vec.x_d == 0 && n_vec.y_d != 0 && n_vec.z_d == 0)
 	{
 		*phi = 0;
-		*theta = - asin(n_vec.y_d);
+		*theta = -asin(n_vec.y_d);
 	}
 	else if (n_vec.x_d == 0 && n_vec.y_d == 0 && n_vec.z_d != 0)
 	{
@@ -56,4 +56,5 @@ void	compute_cam_angle(t_scene *scene)
 
 	cam = &scene->camera;
 	get_theta_phi(cam->orientation, &cam->theta, &cam->phi);
+	cam->rho = 0;
 }

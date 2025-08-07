@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   accesseur_color.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rrabeari <rrabeari@student.42antananari    +#+  +:+       +#+        */
+/*   By: fifrandr <fifrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 19:57:32 by rrabeari          #+#    #+#             */
-/*   Updated: 2025/02/18 20:46:46 by rrabeari         ###   ########.fr       */
+/*   Updated: 2025/02/24 12:43:55 by fifrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@ int	convert_color(t_color col)
 {
 	int	value;
 	int	r;
-	int g;
+	int	g;
 	int	b;
 
 	value = 0;
 	r = col.part1 * 255;
 	g = col.part2 * 255;
 	b = col.part3 * 255;
-	value = ((r << 16) & 0xff0000) | ((g << 8) & 0xff00) | ((b &0xff));
+	value = ((r << 16) & 0xff0000) | ((g << 8) & 0x00ff00) | ((b & 0x0000ff));
 	return (value);
 }
 

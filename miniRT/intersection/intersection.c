@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersection.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rrabeari <rrabeari@student.42antananari    +#+  +:+       +#+        */
+/*   By: fifrandr <fifrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 07:34:51 by rrabeari          #+#    #+#             */
-/*   Updated: 2025/02/18 20:34:46 by rrabeari         ###   ########.fr       */
+/*   Updated: 2025/03/05 11:22:16 by fifrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,22 @@
 
 void	intersection(t_scene *scene, t_colision *col, t_vector vec, t_scr_p p)
 {
-	t_color	obj_color;
-	
+	t_point	inter;
+
 	col->obj = (void *) NULL;
 	col->dist = INT_MAX;
 	col->type[0] = '\0';
+	col->cap = 0;
 	vec = normalisation(vec);
 	sphere_int(vec, &scene->sphere, col);
 	plan_int(vec, &scene->plan, col);
 	cyl_int(vec, &scene->cylinder, col);
-	if (col->dist < INT_MAX)
+	if (col->dist < INT_MAX && col->dist > 0)
 	{
-		if (ft_strcmp(col->type, "sp") == 0)
-		{
-			obj_color = ((t_sphere *) col->obj)->color;
-			my_put_pixel(p.x, p.y, convert_color(obj_color), scene);
-		}
-		else if (ft_strcmp(col->type, "pl") == 0)
-		{
-			obj_color = ((t_plan *) col->obj)->color;
-			my_put_pixel(p.x, p.y, convert_color(obj_color), scene);
-		}
-		else if (ft_strcmp(col->type, "cy") == 0)
-		{
-			obj_color = ((t_cylinder *) col->obj)->color;
-			my_put_pixel(p.x, p.y, convert_color(obj_color), scene);
-		}
+		inter.x_p = vec.origin_d.x_p + vec.x_d * (col->dist - 0.0001);
+		inter.y_p = vec.origin_d.y_p + vec.y_d * (col->dist - 0.0001);
+		inter.z_p = vec.origin_d.z_p + vec.z_d * (col->dist - 0.0001);
+		intersect_light(scene, col, inter, p);
 	}
 	else
 		my_put_pixel(p.x, p.y, 0x000000, scene);

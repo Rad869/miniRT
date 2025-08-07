@@ -6,7 +6,7 @@
 /*   By: fifrandr <fifrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 10:01:38 by fifrandr          #+#    #+#             */
-/*   Updated: 2025/01/27 10:23:04 by fifrandr         ###   ########.fr       */
+/*   Updated: 2025/03/01 13:05:13 by fifrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,5 @@ char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char	*ft_itoa(int n);
-char	**ft_split(char const *str, char c);
+char	**ft_split(char *str, char c);
 #endif

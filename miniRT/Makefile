@@ -1,6 +1,6 @@
 NAME = miniRT
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra -Iminilibx-linux -g
+CFLAGS = -Wall -Werror -Wextra -Iminilibx-linux
 all   :	$(NAME)
 
 SRCS = 	main.c \
@@ -23,19 +23,30 @@ SRCS = 	main.c \
 		parsing/add_sphere_cylinder.c \
 		parsing/parse_element.c \
 		parsing/parse_element_suite.c \
+		parsing/free_elements.c \
 		initialisation/init_scene.c \
 		windows/init_windows.c \
+		windows/init_windows_suite.c \
+		windows/init_windows_suite2.c \
 		showing/intersect_show.c \
 		utils/my_put_pixel.c \
 		utils/get_real_screen.c \
 		utils/compute_cam_angle.c \
 		utils/transform_cam.c \
 		intersection/plan_intersection.c \
+		intersection/plan_intersection_suite.c \
 		intersection/intersection.c \
 		vector/vect_product.c \
 		intersection/cylinder_intersection.c \
+		intersection/cylinder_intersection_suite.c \
 		color/accesseur_color.c \
-		utils/get_norm_surface.c
+		utils/get_norm_surface.c \
+		lightning/intersect_light.c \
+		lightning/intersect_light_suite.c
+
+SRCS_BONUS = $(addprefix Bonus/, $(SRCS:%.c=%_bonus.c))
+
+OBJS_BONUS = $(addprefix Bonus/, $(SRCS:%.c=%_bonus.o))
 
 OBJS = $(SRCS:.c=.o)
 
@@ -51,8 +62,14 @@ LIBS = -Lminilibx-linux -lmlx -L/usr/lib -lXext -lX11 -lm -lz
 MLX_DIR = minilibx-linux
 MLX_LIB = $(MLX_DIR)/libmlx.a
 
+BONUS = miniRT_bonus 
+
+bonus : $(OBJS_BONUS) $(LIBFT) $(MLX_LIB)
+	$(CC) $(CFLAGS) $(OBJS_BONUS) $(LIBS) $(LIBFT) -lm -o $(BONUS)
+
+
 $(MLX_LIB):
-	@$(MAKE) -C $(MLX_DIR)
+	@make -C $(MLX_DIR)
 
 $(NAME): $(OBJS) $(LIBFT) $(MLX_LIB)
 	$(CC) $(CFLAGS) $(OBJS) $(LIBS) $(LIBFT) -lm -o $(NAME)
@@ -62,11 +79,12 @@ $(LIBFT):
 
 clean:
 	$(RM) $(OBJS)
+	$(RM) $(OBJS_BONUS)
 	@make clean -C $(LIBFT_PATH)
-	@make clean -C $(MLX_DIR)
 
 fclean: clean
 	$(RM) $(NAME)
+	$(RM) $(BONUS)
 	@make fclean -C $(LIBFT_PATH)
 
 re: fclean $(NAME)

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   vect_product.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rrabeari <rrabeari@student.42antananari    +#+  +:+       +#+        */
+/*   By: fifrandr <fifrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 09:03:21 by rrabeari          #+#    #+#             */
-/*   Updated: 2025/02/18 10:39:10 by rrabeari         ###   ########.fr       */
+/*   Updated: 2025/02/24 13:30:57 by fifrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/miniRT.h"
 
-t_point		to_point(t_vector vec)
+t_point	to_point(t_vector vec)
 {
 	t_point	point;
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_real_screen.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rrabeari <rrabeari@student.42antananari    +#+  +:+       +#+        */
+/*   By: fifrandr <fifrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 13:39:35 by rrabeari          #+#    #+#             */
-/*   Updated: 2025/02/14 15:39:08 by rrabeari         ###   ########.fr       */
+/*   Updated: 2025/02/24 13:27:11 by fifrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	get_real_screen(t_scene *scene)
 {
-	int	width;
+	int		width;
 	double	theta;
 
 	width = scene->win->width;

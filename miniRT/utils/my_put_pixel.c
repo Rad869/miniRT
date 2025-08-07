@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   my_put_pixel.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rrabeari <rrabeari@student.42antananari    +#+  +:+       +#+        */
+/*   By: fifrandr <fifrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 10:14:25 by rrabeari          #+#    #+#             */
-/*   Updated: 2025/02/14 13:08:41 by rrabeari         ###   ########.fr       */
+/*   Updated: 2025/02/24 13:27:41 by fifrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ void	my_put_pixel(int x, int y, int color, t_scene *scene)
 		ll = scene->win->ll;
 		bpp = scene->win->bpp;
 		destination = addr + (y * ll + x * (bpp / 8));
-		*(unsigned int*) destination = color;
+		*(unsigned int *) destination = color;
 	}
 }
